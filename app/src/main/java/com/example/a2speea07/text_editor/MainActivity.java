@@ -2,6 +2,7 @@ package com.example.a2speea07.text_editor;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -57,7 +58,19 @@ public class MainActivity extends Activity
         {
             try
             {
-                BufferedReader reader = new BufferedReader(new FileReader("marks.txt"));
+                FileReader fr = new FileReader(Environment.getExternalStorageDirectory().getAbsolutePath() + "/marks.txt");
+                BufferedReader reader = new BufferedReader(fr);
+                String line = "", wholeFile = "";
+                while((line = reader.readLine()) != null)
+                {
+
+                }
+            }
+            catch(IOException e)
+            {
+                new AlertDialog.Builder(this).setMessage("ERROR: " + e).
+                        setPositiveButton("OK", null).show();
+
             }
 
         }
